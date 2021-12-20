@@ -1,0 +1,1 @@
+[-validate=none, -p, kz.nitec.shep.service.async, -wsdlLocation, classpath:shep/AsyncChannel/v10/Interfaces/AsyncChannelHttp_Service.wsdl, file:/D:/Documents/epts/kgd-ws-security-service/src/main/resources/shep/AsyncChannel/v10/Interfaces/AsyncChannelHttp_Service.wsdl]

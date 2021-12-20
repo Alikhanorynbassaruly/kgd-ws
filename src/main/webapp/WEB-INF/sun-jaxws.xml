@@ -1,0 +1,6 @@
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+           version="2.0">
+    <endpoint name="ISyncChannel"
+              implementation="kz.nitec.shep.service.sync.SyncServiceImpl"
+              url-pattern="/sync-service-endpoint" />
+</endpoints>

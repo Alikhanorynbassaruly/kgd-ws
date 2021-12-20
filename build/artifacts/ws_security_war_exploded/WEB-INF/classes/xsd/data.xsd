@@ -1,0 +1,50 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://shep.nitec.kz/"
+           elementFormDefault="unqualified"
+           targetNamespace="http://shep.nitec.kz/"
+           version="1.0">
+    <xs:element name="request" type="tns:Request"/>
+    <xs:element name="response" type="tns:Response"/>
+    <xs:complexType name="Request">
+        <xs:sequence>
+            <xs:element name="requestNumber" type="xs:string"/>
+            <xs:element name="uin" type="xs:string"/>
+            <xs:element name="date" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Response">
+        <xs:sequence>
+            <xs:element name="requestNumber" type="xs:string"/>
+            <xs:element name="status" type="tns:Status"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Status">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string"/>
+            <xs:element name="messageRu" type="xs:string"/>
+            <xs:element name="messageKz" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="eventJournal">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="events" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="datetime" type="xs:dateTime" />
+                            <xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:int" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="transportCompanyBin" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="transportCompany" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="meteringDevicesName" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="descriptionOfMeteringDevices_Name" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="descriptionOfMeteringDevices_Location" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="descriptionOfMeteringDevices_Way" type="xs:string" />
+                            <xs:element minOccurs="0" maxOccurs="1" name="descriptionOfMeteringDevices_Affiliation" type="xs:string" />
+                            <xs:element minOccurs="1" maxOccurs="1" name="grossMassOfTransportedOil" type="xs:double" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

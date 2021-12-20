@@ -1,0 +1,1 @@
+[-validate=none, -p, kz.nitec.shep.service.sync, -wsdlLocation, classpath:shep/SyncChannel/v10/Interfaces/SyncChannelHttp_Service.wsdl, file:/C:/Users/Alikhan/Documents/epts/kgd-ws-security-service/src/main/resources/shep/SyncChannel/v10/Interfaces/SyncChannelHttp_Service.wsdl]

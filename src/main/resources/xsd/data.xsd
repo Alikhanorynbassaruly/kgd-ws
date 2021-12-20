@@ -1,0 +1,63 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://shep.nitec.kz/"
+           elementFormDefault="unqualified"
+           targetNamespace="http://shep.nitec.kz/"
+           version="1.0">
+    <xs:element name="request" type="tns:Request"/>
+    <xs:element name="response" type="tns:Response"/>
+    <xs:complexType name="Request">
+        <xs:sequence>
+            <xs:element name="events" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="documentType" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="declarationType" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="customProdCode" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="releaseDate" type="xs:dateTime" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="originCountry" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="departureCountry" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="destinationCountry" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="customPoint" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="docNumber" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="customLimitDescription" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="customPointName" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="consignorName" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="consignorIinBin" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="recipientName" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="declarantIinBin" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="tnvedCode" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="netMass" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="addUnitCode" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="unitMeasurement" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="numberUnitMeasurement" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="brand" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="model" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="vinCode" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="engVolume" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="engNumber" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="chassisNumber" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="kabinNumber" type="xs:string" />
+                        <xs:element minOccurs="0" maxOccurs="1" name="kuzovNumber" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="issueYear" type="xs:string" />
+                        <xs:element minOccurs="1" maxOccurs="1" name="docName" type="xs:string" />
+                        <xs:element minOccurs="0" name="customLimitBegin" type="xs:date" />
+                        <xs:element minOccurs="0" name="customLimitEnd" type="xs:date" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Response">
+        <xs:sequence>
+            <xs:element name="requestNumber" type="xs:string"/>
+            <xs:element name="status" type="tns:Status"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Status">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string"/>
+            <xs:element name="messageRu" type="xs:string"/>
+            <xs:element name="messageKz" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

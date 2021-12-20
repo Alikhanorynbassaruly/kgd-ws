@@ -1,0 +1,268 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://shep.nitec.kz/"
+           elementFormDefault="unqualified"
+           targetNamespace="http://shep.nitec.kz/"
+           version="1.0">
+    <xs:element name="request" type="tns:Request"/>
+    <xs:element name="response" type="tns:Response"/>
+    <xs:complexType name="Request">
+        <xs:sequence>
+            <xs:element name="events" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="documentType">
+                            <xs:annotation>
+                                <xs:documentation>Тип документа</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ДТ">
+                                        <xs:annotation>
+                                            <xs:documentation>декларация на товары</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="ТПО">
+                                        <xs:annotation>
+                                            <xs:documentation>Экспорт</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="docName">
+                            <xs:annotation>
+                                <xs:documentation>Наименование документа ограничения</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:length value="200"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="operationType">
+                            <xs:annotation>
+                                <xs:documentation>Вид операции</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:length value="2"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="operationDate" type="xs:date">
+                            <xs:annotation>
+                                <xs:documentation>дата выпуска товара</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="manufactureCountry">
+                            <xs:annotation>
+                                <xs:documentation>страна изготовления</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="3"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="departureCountry">
+                            <xs:annotation>
+                                <xs:documentation>Страна отправления</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="3"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="destinationCountry">
+                            <xs:annotation>
+                                <xs:documentation>Страна назначения</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="3"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="customPoint">
+                            <xs:annotation>
+                                <xs:documentation>таможенный пункт</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="12"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="mode">
+                            <xs:annotation>
+                                <xs:documentation>режим</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:length value="2"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="consignorIinBin">
+                            <xs:annotation>
+                                <xs:documentation>иин/бин отправителя</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="24"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="consignorName">
+                            <xs:annotation>
+                                <xs:documentation>наименование отправителя</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="256"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="vinCode">
+                            <xs:annotation>
+                                <xs:documentation>Вин код</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="engNumber">
+                            <xs:annotation>
+                                <xs:documentation>Номер двигателя</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <!--                        <xs:element minOccurs="0" maxOccurs="1" name="chassisNumber" type="xs:string" />-->
+                        <xs:element minOccurs="0" name="chassisNumber">
+                            <xs:annotation>
+                                <xs:documentation>номер шасси</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <!--                        <xs:element minOccurs="0" maxOccurs="1" name="kuzovNumber" type="xs:string" />-->
+                        <xs:element minOccurs="0" name="kuzovNumber">
+                            <xs:annotation>
+                                <xs:documentation>номер кузова</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="kabinNumber">
+                            <xs:annotation>
+                                <xs:documentation>номер кабины</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="godVipuska">
+                            <xs:annotation>
+                                <xs:documentation>год выпуска</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="selfMoveKuzovNumber">
+                            <xs:annotation>
+                                <xs:documentation>номер сомодвиж кузова</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="50"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="netMass" type="xs:decimal">
+                            <xs:annotation>
+                                <xs:documentation>масса нетто</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="supCode">
+                            <xs:annotation>
+                                <xs:documentation>код доп. ед. изм.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="16"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="supQty" type="xs:decimal">
+                            <xs:annotation>
+                                <xs:documentation>колич. в доп. ед. изм.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="tnvedCode">
+                            <xs:annotation>
+                                <xs:documentation>код товара</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="18"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="docNumber">
+                            <xs:annotation>
+                                <xs:documentation>номер документа</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="64"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="customLimitDescription">
+                            <xs:annotation>
+                                <xs:documentation>номер ограничения</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="64"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="customLimitBegin" type="xs:date" />
+                        <xs:element minOccurs="0" name="customLimitEnd" type="xs:date" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Response">
+        <xs:sequence>
+            <xs:element name="requestNumber" type="xs:string"/>
+            <xs:element name="status" type="tns:Status"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Status">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string"/>
+            <xs:element name="messageRu" type="xs:string"/>
+            <xs:element name="messageKz" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
